@@ -18,6 +18,16 @@
             = link_to "Edit Profile", edit_user_registration_path
             = link_to "Sign Out", destroy_user_session_path, method: :delete
           - else
-            = link_to "Login", new_user_session_path          
-            = link_to "Signup", new_user_registration_path
-    = yield
+            = link_to "Login", user_session_path
+
+    .container
+      .row
+        .col-md-3
+          .list-group
+            .list-group-item= link_to 'Users', users_path
+            .list-group-item= link_to 'Projects', projects_path
+            .list-group-item= link_to 'Bugs', bugs_path
+        .col-md-9
+          = yield
+            
+        

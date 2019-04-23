@@ -11,7 +11,7 @@
 
     <div class="field">
       <%= f.label :role_id %><br />
-      <%= f.collection_select :role_id, Role.where(:active => '1'), :id, :name, autocomplete: "role_id", prompt: 'Select a Role', class: 'dropdown', class: 'dropdown' %>
+      <%= f.collection_select :role_id, Role.where(:active => '1'), :id, :name, autocomplete: "role_id", prompt: 'Select a Role', class: 'dropdown' %>
     </div>
 
     <div class="field">

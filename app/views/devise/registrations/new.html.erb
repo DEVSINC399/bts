@@ -11,7 +11,7 @@
 
     <div class="field">
       <%= f.label :role_id %><br />
-      <%= f.collection_select :role_id, Role.order(:name), :id, :name, autocomplete: "role_id" %>
+      <%= f.collection_select :role_id, Role.order(:name), :id, :name, autocomplete: "role_id", prompt: 'Select a Role' %>
     </div>
 
     <div class="field">

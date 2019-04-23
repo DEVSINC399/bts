@@ -1,0 +1,27 @@
+%section.content-header.some( style='padding: 10px 15px !important;' )
+    %h1 Users
+
+    .box.box-primary
+        .box-header
+            %i.fa.fa-list.some( style='padding-top: 6px;' )
+            %h3.box-title.some( style='padding-top: 6px;' ) List
+        .panel-body.table-responsive
+            %table#users-table.table-stripped.table.table-bordered
+                %thead
+                    %tr
+                        %th S:No
+                        %th User Name
+                        %th Email
+                        %th Role
+                        %th Actions
+                %tbody
+                    - @users.each_with_index do |user, i|
+                        %tr
+                            %td= i+1
+                            %td= user.name
+                            %td= user.email
+                            %td= user.role.name
+                            %td
+                                - unless user.role_id == '1'
+                                    = link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure to delete the user?' }, class: 'btn btn-danger btn-xs'
+                        

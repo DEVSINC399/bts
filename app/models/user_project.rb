@@ -1,4 +1,5 @@
 class UserProject < ApplicationRecord
     belongs_to :user
-    brlongs_to :project
+    belongs_to :project
+    # validates_presence_of :user, :project
 end

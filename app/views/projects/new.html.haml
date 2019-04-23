@@ -1,0 +1,11 @@
+%section.content-header.some( style='padding: 10px 15px !important;' )
+    %h1 Projects
+
+    .box.box-primary
+        .box-header
+            %i.fa.fa-list.some( style='padding-top: 6px;' )
+            %h3.box-title.some( style='padding-top: 6px;' )
+                Add new Project
+                = link_to 'Back', projects_path, class: 'btn btn-danger pull-right'
+        .panel-body.table-responsive
+            = render 'form'
