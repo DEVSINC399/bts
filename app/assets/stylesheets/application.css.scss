@@ -1,6 +1,9 @@
 /*
  *= require_self
+ *= require toastr
  */
+//  @import "bootstrap-sprockets";
+//  @import "bootstrap";
  @import 'global.css.scss';
  @import 'normalize.css.scss';
  @import 'welcome.css.scss';

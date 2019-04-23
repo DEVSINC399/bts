@@ -76,7 +76,7 @@ header {
 		#logo {
 			display: inline-block;
 			width: 10rem;
-			float: left;
+			// float: left;
         }
         a{
             font-size: 20px;
@@ -127,3 +127,14 @@ input[type="text"], input[type="email"], input[type="password"] {
 textarea {
 	min-height: 200px;
 }
+
+.dropdown{
+    font-size: 13px;
+    padding: 10px 8px 10px 14px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }

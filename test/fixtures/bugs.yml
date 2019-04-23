@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  status: 1
+  type: 1
+  deadline: 2019-04-22
+  created_by: 1
+  resolved_by: 1
+
+two:
+  title: MyString
+  description: MyText
+  status: 1
+  type: 1
+  deadline: 2019-04-22
+  created_by: 1
+  resolved_by: 1
