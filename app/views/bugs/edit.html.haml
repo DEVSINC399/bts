@@ -1,0 +1,11 @@
+%section.content-header.some( style='padding: 10px 15px !important;' )
+    %h1 Bugs
+
+    .box.box-primary
+        .box-header
+            %i.fa.fa-list.some( style='padding-top: 6px;' )
+            %h3.box-title.some( style='padding-top: 6px;' )
+                Edit a Bug: =@bug.title
+                = link_to 'Back', bugs_path, class: 'btn btn-danger pull-right'
+        .panel-body.table-responsive
+            = render 'form'

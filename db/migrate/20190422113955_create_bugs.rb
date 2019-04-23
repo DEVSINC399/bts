@@ -4,7 +4,7 @@ class CreateBugs < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :description
       t.integer :status
-      t.integer :type
+      t.integer :bug_type
       t.date :deadline
       t.integer :created_by
       t.integer :resolved_by
