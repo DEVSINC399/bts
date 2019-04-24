@@ -3,3 +3,13 @@
         Projects
         - if can? :create, Project
             = link_to 'Add Project', new_project_path, class: 'btn btn-primary pull-right'
+%br/
+- @projects.each_slice(4) do |projects|
+    .row
+        - projects.each do |project|
+            .col-md-3
+                .project
+                    .image_wrapper
+                        = link_to project do
+                            = image_tag 'project-management.png'
+                    %h2=link_to project.title, project

@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     end
     def create
         @project = Project.new(project_params)
-        @project.created_by = current_user
+        @project.created_by = current_user.id
         if @project.save
             redirect_to projects_path, notice: 'Project added successfully.'
         else
@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
     end
     private
         def project_params
-            params.require(:project).permit(:title, :description, :link, user_ids: [])
+            params.require(:project).permit(:title, :description, :link, :created_by, user_ids: [])
         end
         def find_projects
             @project = Project.find(params[:id])
