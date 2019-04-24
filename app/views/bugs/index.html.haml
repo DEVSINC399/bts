@@ -23,11 +23,11 @@
                             %tr
                                 %td= i+1
                                 %td= bug.title
-                                %td= truncate(bug.description, length: '100')
+                                %td= bug.description
                                 %td= bug.creator.name
                                 %td N/A
                                 %td
-                                    = link_to 'Edit', edit_bug_path(bug), class: 'btn btn-info btn-xs'
+                                    = link_to 'Edit', edit_bug_path(bug), class: 'btn btn-info btn-xs mb-5'
                                     = link_to 'Delete', bug_path(bug), method: :delete, data: { confirm: 'Are you sure to delete the bug?' }, class: 'btn btn-danger btn-xs'
                     - else
                         %tr
