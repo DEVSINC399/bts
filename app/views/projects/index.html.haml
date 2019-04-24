@@ -25,7 +25,7 @@
                                 %td= truncate(project.description, length: 100)
                                 %td= project.link
                                 %td
-                                    = link_to 'Edit', edit_project_path(project), class: 'btn btn-info btn-xs'
+                                    = link_to 'Edit', edit_project_path(project), class: 'btn btn-info btn-xs mb-5'
                                     = link_to 'Delete', project_path(project), method: :delete, data: { confirm: 'Are you sure to delete the user?' }, class: 'btn btn-danger btn-xs'
                     - else
                         %tr

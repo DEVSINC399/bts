@@ -12,22 +12,24 @@
                 %thead
                     %tr
                         %th S:No
-                        %th User Name
-                        %th Email
-                        %th Role
+                        %th Title
+                        %th Description
+                        %th Reported By
+                        %th Resolved By
                         %th Actions
                 %tbody
                     - if @bugs.any?
-                        - @bugs.each_with_index do |user, i|
+                        - @bugs.each_with_index do |bug, i|
                             %tr
                                 %td= i+1
-                                %td= user.name
-                                %td= user.email
-                                %td= user.role.name
+                                %td= bug.title
+                                %td= truncate(bug.description, length: '100')
+                                %td= bug.creator.name
+                                %td N/A
                                 %td
-                                    - unless user.role_id == '1'
-                                        = link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure to delete the user?' }, class: 'btn btn-danger btn-xs'
+                                    = link_to 'Edit', edit_bug_path(bug), class: 'btn btn-info btn-xs'
+                                    = link_to 'Delete', bug_path(bug), method: :delete, data: { confirm: 'Are you sure to delete the bug?' }, class: 'btn btn-danger btn-xs'
                     - else
                         %tr
-                            %td.some(colspan = '5') No Bugs Found                    
+                            %td.some(colspan = '6') No Bugs Found                    
                         

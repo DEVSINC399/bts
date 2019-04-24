@@ -6,7 +6,7 @@
     .field
         = f.label :bug_type, 'Bug Type'
         %br/
-        = f.collection_select :bug_type, $types, :to_s, :to_s, {:prompt => 'Select a Type'}, autocomplete: 'bug_type', class: 'form-control'
+        = f.collection_select :bug_type, $types, :first, :last, {:prompt => 'Select a Type'}, autocomplete: 'bug_type', class: 'form-control'
     %br.field
         = f.input :deadline, autocomplete: 'deadline'        
     .field

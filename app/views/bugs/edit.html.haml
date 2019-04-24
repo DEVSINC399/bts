@@ -5,7 +5,8 @@
         .box-header
             %i.fa.fa-list.some( style='padding-top: 6px;' )
             %h3.box-title.some( style='padding-top: 6px;' )
-                Edit a Bug: =@bug.title
+                Edit a Bug:
+                = @bug.title
                 = link_to 'Back', bugs_path, class: 'btn btn-danger pull-right'
         .panel-body.table-responsive
             = render 'form'
