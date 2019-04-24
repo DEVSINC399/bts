@@ -1,4 +1,6 @@
 class BugsController < ApplicationController
+    before_action :authenticate_user!
+    load_and_authorize_resource
     layout 'dashboard'
     before_action :find_bug, only: [:show, :edit, :update, :destroy]
     $types = { 1 => 'Bug', 2 => 'Feature', 3 => 'Change Request'}

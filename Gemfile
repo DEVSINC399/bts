@@ -45,6 +45,8 @@ gem 'paperclip', '~> 6.1'
 gem 'toastr-rails'
 gem 'hirb', '~> 0.7.3'
 gem 'paperclip', '~> 6.1'
+gem 'cancancan', '~> 3.0', '>= 3.0.1'
+gem 'rolify', '~> 5.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

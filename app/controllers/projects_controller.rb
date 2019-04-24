@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+    before_action :authenticate_user!
+    load_and_authorize_resource
     layout 'dashboard'
     before_action :find_projects, only: [:show, :edit, :update, :destroy]
     def index

@@ -17,17 +17,21 @@
             = link_to "Dashboard", home_index_path
             = link_to "Edit Profile", edit_user_registration_path
             = link_to "Sign Out", destroy_user_session_path, method: :delete
+            = link_to 'Welcome, '<<current_user.name
           - else
             = link_to "Login", user_session_path
 
     .container
+      - flash.each do |name, msg|
+        = content_tag(:div, msg, class: 'alert alert-success')
       .row
-        .col-md-3
-          .list-group
-            .list-group-item= link_to 'Users', users_path
-            .list-group-item= link_to 'Projects', projects_path
-            .list-group-item= link_to 'Bugs', bugs_path
-        .col-md-9
+        -# .col-md-3
+        -#   .list-group
+        -#     .list-group-item= link_to 'Users', users_path
+        -#     .list-group-item= link_to 'Projects', projects_path
+        -#     .list-group-item= link_to 'Bugs', bugs_path
+        -# .col-md-9
+        .col-md-12
           = yield
             
         
