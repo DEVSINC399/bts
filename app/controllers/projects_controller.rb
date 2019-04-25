@@ -29,6 +29,8 @@ class ProjectsController < ApplicationController
         @project.destroy
         redirect_to projects_path, notice: 'Project deleted successfully.'
     end
+    def show
+    end
     private
         def project_params
             params.require(:project).permit(:title, :description, :link, :created_by, user_ids: [])

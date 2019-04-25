@@ -195,3 +195,36 @@ select[multiple]{
 		}
 	}
 }
+
+.main_content {
+	padding: 0 0 50px 0;
+}
+
+#project_top {
+	margin-bottom: 50px;
+	img{
+		background-size: cover;
+		width: 100%;
+		border-radius: 0.3rem;
+	}
+}
+
+#project_info {
+	background: white;
+	@include box-shadow;
+	min-height: 360px;
+	border-radius: 5px;
+	padding: 2em 8%;
+}
+
+#project_info {
+	h1 {
+		font-size: 36px;
+		font-weight: normal;
+		color: $red;
+	}
+	.description {
+		color: #8A8A8A;
+		font-size: 20px;
+	}
+}

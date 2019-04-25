@@ -11,13 +11,13 @@ class Ability
         can :manage, Bug, project_id: project.id
       end
     elsif user.developer?
-      
+      can :read, Project
     elsif user.qa?
-        
+      can :manage, Bug do |bug|
+        bug.created_by = user.id || bug.resolved_by = user.id
+      end
     else
-      # can :manage, Bug, created_by: user.id
-      # can :manage, Project, created_by: user.id
-      # can :read, :all
+
     end
   end
 end

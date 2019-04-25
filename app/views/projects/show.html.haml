@@ -1,0 +1,20 @@
+.main-content
+    #project_top.row
+        .col-md-4
+            = image_tag 'project-management.png'
+        .col-md-8
+            #project_info
+                %h1= @project.title
+                %strong Managed by
+                %small= @project.creator.name
+                %br/
+                %p= @project.description
+    .row
+        .col-md-12
+            .pull-right.btn-group
+                - if can? :update, Project
+                    = link_to 'Edit', edit_project_path(@project), class: 'btn btn-default'
+                - if can? :destroy, Project
+                    = link_to 'Delete', @project, method: :delete, data: { confirm: "Are you sure to delete the project?" }, class: 'btn btn-danger'
+                = link_to 'Back', root_path, class: 'btn btn-default'
+%br/
