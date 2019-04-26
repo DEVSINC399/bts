@@ -1,15 +1,54 @@
 .sub_heading
     %h2
+        Bugs
+%br/
+-if @bugs.any?
+    - @bugs.each_slice(4) do |bugs|
+        .row
+            - bugs.each do |bug|
+                .col-md-3
+                    .project
+                        .image_wrapper
+                            = link_to project_bug_path(bug.project, bug) do
+                                = image_tag bug.attachment? ? bug.attachment.url(:medium) : 'error.png', class: 'bug_image'
+                        %h2=link_to bug.title, project_bug_path(bug.project, bug)
+                        %p.some(style='padding-left: 10px;')
+                            Project: 
+                            = link_to bug.project.title, bug.project                        
+                        %p.some(style='padding-left: 10px;'){:id => "status_section_#{bug.id}"}= t("statuses." + bug.status.to_s)
+                        %p.some(style= 'padding: 0 0 10px 10px;')
+                            %strong Reported By
+                            = bug.creator.name
+                            - if bug.resolved_by == nil
+                                - if can? :assign, Bug
+                                    %span#pick_section.pull-right.some( style='padding-right: 20px;' )= link_to 'Pick', bug_assign_path(bug), class: 'btn btn-xs btn-info', remote: true, id: 'assign_btn_'+bug.id.to_s
+                            - elsif bug.resolved_by == current_user.id && bug.status == 2
+                                %span.pull-right.some( style='padding-right: 20px;' )= link_to 'Resolved', bug_resolve_path(bug), class: 'btn btn-xs btn-success', remote: true, id: 'resolve_btn_'+bug.id.to_s
+                            - else
+                                - if bug.created_by == current_user.id && bug.status == 3
+                                    %span.pull-right.some( style='padding-right: 20px;' )= link_to 'Reviewed', bug_review_path(bug), class: 'btn btn-xs btn-warning', remote: true, id: 'review_btn_'+bug.id.to_s
+                                - else
+                                    %span.pull-right.some( style='padding-right: 20px;' )
+                                        = bug.resolver.name
+- else
+    %h4.text-center No Bugs Found
+    %br/                     
+.sub_heading
+    %h2
         Projects
         - if can? :create, Project
             = link_to 'Add Project', new_project_path, class: 'btn btn-primary pull-right'
 %br/
-- @projects.each_slice(4) do |projects|
-    .row
-        - projects.each do |project|
-            .col-md-3
-                .project
-                    .image_wrapper
-                        = link_to project do
-                            = image_tag 'project-management.png'
-                    %h2=link_to project.title, project
+-if @projects.any?    
+    - @projects.each_slice(4) do |projects|
+        .row
+            - projects.each do |project|
+                .col-md-3
+                    .project
+                        .image_wrapper
+                            = link_to project do
+                                = image_tag 'project-management.png'
+                        %h2=link_to project.title, project
+- else
+    %h4.text-center No Projects Found
+    %br/   

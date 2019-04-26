@@ -1,4 +1,4 @@
-= simple_form_for @bug, html: { multipart: true } do |f|
+= simple_form_for [@project, @bug], html: { multipart: true } do |f|
     .field
         = f.input :title, autofocus: true, autocomplete: 'title'
     .field
@@ -6,7 +6,7 @@
     .field
         = f.label :bug_type, 'Bug Type'
         %br/
-        = f.collection_select :bug_type, $types, :first, :last, {:prompt => 'Select a Type'}, autocomplete: 'bug_type', class: 'form-control'
+        = f.collection_select :bug_type, t('types'), :first, :last, {:prompt => 'Select a Type'}, autocomplete: 'bug_type', class: 'form-control'
     %br.field
         = f.input :deadline, autocomplete: 'deadline'
     .field
@@ -14,3 +14,4 @@
     
     .field
         = f.button :submit, class: 'btn btn-success'
+    = f.hidden_field :project_id, value: @project.id

@@ -191,7 +191,7 @@ select[multiple]{
 		font-weight: normal;
 		line-height: 1.5;
 		a {
-			color: $red;
+			color: $green;
 		}
 	}
 }
@@ -221,10 +221,17 @@ select[multiple]{
 	h1 {
 		font-size: 36px;
 		font-weight: normal;
-		color: $red;
+		color: $green;
 	}
 	.description {
 		color: #8A8A8A;
 		font-size: 20px;
 	}
+}
+
+.bug_image {
+	max-width: 100%;
+	border-radius: 5px;
+	@include box-shadow;
+	height: 200px;
 }

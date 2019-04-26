@@ -1,11 +1,11 @@
-%section.content-header.some( style='padding: 10px 15px !important;' )
-    %h1 Bugs
+%section#project_info
+    %h1= @project.title
 
     .box.box-primary
         .box-header
             %i.fa.fa-list.some( style='padding-top: 6px;' )
-            %h3.box-title.some( style='padding-top: 6px;' )
+            %h4.box-title.some( style='padding-top: 6px;' )
                 Report new Bug
-                = link_to 'Back', bugs_path, class: 'btn btn-danger pull-right'
+                = link_to 'Back', @project, class: 'btn btn-danger pull-right'
         .panel-body.table-responsive
             = render 'form'

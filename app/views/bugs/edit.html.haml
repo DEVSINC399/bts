@@ -1,4 +1,4 @@
-%section.content-header.some( style='padding: 10px 15px !important;' )
+%section#project_info.content-header.some( style='padding: 10px 15px !important;' )
     %h1 Bugs
 
     .box.box-primary
@@ -7,6 +7,6 @@
             %h3.box-title.some( style='padding-top: 6px;' )
                 Edit a Bug:
                 = @bug.title
-                = link_to 'Back', bugs_path, class: 'btn btn-danger pull-right'
+                = link_to 'Back', project_bug_path(@bug.project, @bug), class: 'btn btn-danger pull-right'
         .panel-body.table-responsive
             = render 'form'

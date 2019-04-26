@@ -1,0 +1,2 @@
+$("#assign_btn_<%= @bug.id %>").hide().after('<a class="btn btn-xs btn-success pull-right" id="resolve_btn" data-remote="true" href="/bugs/11/resolve">Resolved</a>');
+$("#status_section_<%= @bug.id %>").html('In Progress');

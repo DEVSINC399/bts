@@ -17,4 +17,27 @@
                 - if can? :destroy, Project
                     = link_to 'Delete', @project, method: :delete, data: { confirm: "Are you sure to delete the project?" }, class: 'btn btn-danger'
                 = link_to 'Back', root_path, class: 'btn btn-default'
+.sub_heading
+    %h2
+        Bugs
+        .btn-group.pull-right
+            - if can? :create, Bug
+                = link_to 'Report a Bug', new_project_bug_path(@project), class: 'btn btn-warning'
 %br/
+- if @project.bugs.any?
+    - @project.bugs.each_slice(4) do |bugs|
+        .row
+            - bugs.each do |bug|
+                .col-md-3
+                    .project
+                        .image_wrapper
+                            = link_to project_bug_path(@project, bug) do
+                                = image_tag bug.attachment? ? bug.attachment.url(:medium) : 'error.png'
+                        %h2=link_to bug.title, project_bug_path(@project, bug)
+                        %p.some(style='padding-left: 10px;')= t("statuses." + bug.status.to_s)
+                        %p.some(style= 'padding: 0 0 10px 10px;')
+                            %strong Reported By
+                            = bug.creator.name
+- else
+    %h4.text-center No Bugs Found
+    %br/

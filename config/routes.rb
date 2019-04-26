@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     root 'home#index'
   end
   resources :users
-  resources :projects
-  resources :bugs
+  resources :projects do
+    resources :bugs
+  end
+  get '/bugs/:id/assign', to: 'bugs#assign', as: 'bug_assign'
+  get '/bugs/:id/resolve', to: 'bugs#resolve', as: 'bug_resolve'
+  get '/bugs/:id/review', to: 'bugs#review', as: 'bug_review'
   root 'welcome#index'
 end

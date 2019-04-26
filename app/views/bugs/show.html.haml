@@ -1,0 +1,22 @@
+.main-content
+    #project_top.row
+        .col-md-4
+            = image_tag @bug.attachment? ? @bug.attachment.url(:medium) : 'error.png'
+        .col-md-8
+            #project_info
+                %h1= @bug.title
+                %strong Reported By
+                %small= @bug.creator.name
+                for Project 
+                = link_to @bug.project.title, @bug.project
+                %br/
+                %p= @bug.description
+    .row
+        .col-md-12
+            .pull-right.btn-group
+                - if can? :update, Bug
+                    = link_to 'Edit', edit_project_bug_path(@bug.project, @bug), class: 'btn btn-default'
+                - if can? :destroy, Bug
+                    = link_to 'Delete', [@bug.project, @bug], method: :delete, data: { confirm: "Are you sure to delete the project?" }, class: 'btn btn-danger'
+                = link_to 'Back', root_path, class: 'btn btn-default'
+%br/
