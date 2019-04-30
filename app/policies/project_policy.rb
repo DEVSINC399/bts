@@ -15,7 +15,7 @@ class ProjectPolicy < ApplicationPolicy
   def is_allowed?
     @user.id == @record.created_by || @user.role.name == 'Admin'
   end
-  def is_project_user
+  def is_project_user?
     @record.users.where(:id => @user.id).present?
   end
   def is_manager?
