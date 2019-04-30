@@ -1,10 +1,10 @@
 class BugsController < ApplicationController
     
     before_action :authenticate_user!
-    load_and_authorize_resource
     layout 'dashboard'
     before_action :find_bug, only: [:show, :edit, :update, :destroy, :assign, :resolve, :review]
     before_action :find_project, only: [:create, :update, :edit, :new]
+    after_action :verify_authorized, except: :index
 
     def index
         @bugs = Bug.all
@@ -12,10 +12,13 @@ class BugsController < ApplicationController
 
     def new
         @bug = current_user.created_bugs.build
+        @bug.project_id = params[:project_id]
+        authorize @bug
     end
 
     def create
         @bug = current_user.created_bugs.build(bug_params)
+        authorize @bug
         @bug.status = 1
         if @bug.save
             redirect_to @project, notice: "Bug reported successfully."
@@ -69,6 +72,7 @@ class BugsController < ApplicationController
     end
     def find_bug
         @bug = Bug.find(params[:id])
+        authorize @bug
     end
     def find_project
         @project = Project.find(params[:project_id])

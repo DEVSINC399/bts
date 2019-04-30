@@ -20,7 +20,7 @@
                             %strong Reported By
                             = bug.creator.name
                             - if bug.resolved_by == nil
-                                - if can? :assign, Bug
+                                - if policy(bug).assign?
                                     %span#pick_section.pull-right.some( style='padding-right: 20px;' )= link_to 'Pick', bug_assign_path(bug), class: 'btn btn-xs btn-info', remote: true, id: 'assign_btn_'+bug.id.to_s
                             - elsif bug.resolved_by == current_user.id && bug.status == 2
                                 %span.pull-right.some( style='padding-right: 20px;' )= link_to 'Resolved', bug_resolve_path(bug), class: 'btn btn-xs btn-success', remote: true, id: 'resolve_btn_'+bug.id.to_s
@@ -36,7 +36,7 @@
 .sub_heading
     %h2
         Projects
-        - if can? :create, Project
+        - if policy(Project).create?
             = link_to 'Add Project', new_project_path, class: 'btn btn-primary pull-right'
 %br/
 -if @projects.any?    

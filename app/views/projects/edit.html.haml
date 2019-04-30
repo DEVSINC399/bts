@@ -7,6 +7,6 @@
             %h3.box-title.some( style='padding-top: 6px;' )
                 Edit Project:
                 = @project.title
-                = link_to 'Back', @project, class: 'btn btn-danger pull-right'
+                = link_to 'Back', root_path, class: 'btn btn-danger pull-right'
         .panel-body.table-responsive
             = render 'form'

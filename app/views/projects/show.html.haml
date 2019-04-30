@@ -12,16 +12,14 @@
     .row
         .col-md-12
             .pull-right.btn-group
-                - if can? :update, Project
-                    = link_to 'Edit', edit_project_path(@project), class: 'btn btn-default'
-                - if can? :destroy, Project
-                    = link_to 'Delete', @project, method: :delete, data: { confirm: "Are you sure to delete the project?" }, class: 'btn btn-danger'
+                = link_to 'Edit', edit_project_path(@project), class: 'btn btn-default' if policy(@project).update?
+                = link_to 'Delete', @project, method: :delete, data: { confirm: "Are you sure to delete the project?" }, class: 'btn btn-danger' if policy(@project).destroy?
                 = link_to 'Back', root_path, class: 'btn btn-default'
 .sub_heading
     %h2
         Bugs
         .btn-group.pull-right
-            - if can? :create, Bug
+            - if policy(@project).new?
                 = link_to 'Report a Bug', new_project_bug_path(@project), class: 'btn btn-warning'
 %br/
 - if @project.bugs.any?
